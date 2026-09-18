@@ -1,0 +1,20 @@
+{
+  "name": "game-core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "test": "node --experimental-strip-types --test src/flow.test.ts src/gameEngine.test.ts src/starterCards.test.ts src/result.test.ts src/packs.test.ts src/ownership.test.ts src/sharing.test.ts src/temporaryAccess.test.ts"
+  },
+  "peerDependencies": {
+    "react": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19"
+  }
+}

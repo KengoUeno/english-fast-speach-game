@@ -1,0 +1,23 @@
+{
+  "name": "english-fast-speach-game",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "overrides": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "scripts": {
+    "web": "npm run web -w mobile",
+    "start": "npm run start -w mobile",
+    "test": "npm run test -w game-core",
+    "site": "node scripts/serve-site.js",
+    "generate-icons": "node scripts/generate-icons.js"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
+  }
+}

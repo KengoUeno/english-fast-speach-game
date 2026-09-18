@@ -1,0 +1,655 @@
+/* 追いつけEnglish 公開サイト 共通スタイル（docs/design-tokens.md 準拠） */
+
+/* ------------------------------------------------------------ */
+/* フォント                                                        */
+/* ------------------------------------------------------------ */
+/*
+ * ブランドの英字フォント Fredoka（SIL OFL / fonts/Fredoka-OFL-LICENSE.txt）だけを
+ * サイト内に同梱して読み込む（約50KB）。外部CDNを叩かないので、
+ * オフラインでも読み込み失敗のコンソールエラーが出ない。
+ * 日本語は M PLUS Rounded 1c / Zen Kaku Gothic New を先頭に置きつつ、
+ * 未インストール環境では各OSの丸ゴシック系→標準ゴシックへ段階的にフォールバックする
+ * （日本語ウェブフォントは1書体3MB超あり、サイトに同梱すると閲覧体験を損なうため読み込まない）。
+ */
+@font-face {
+  font-family: 'Fredoka';
+  src: url('fonts/Fredoka_700Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --navy: #18243a;
+  --cream: #fff9ee;
+  --cream-card: #fffdf7;
+  --orange: #ff6f47;
+  --yellow: #ffc83d;
+  --green: #3dae62;
+  --hairline: #e8dcc0;
+  --text: #18243a;
+  --muted: rgba(24, 36, 58, 0.62);
+  --on-navy: #fff9ee;
+  --on-navy-muted: rgba(255, 249, 238, 0.72);
+  --navy-line: rgba(255, 249, 238, 0.18);
+
+  --font-display: 'Fredoka', 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'M PLUS Rounded 1c', 'Hiragino Maru Gothic ProN', 'Hiragino Sans', 'Yu Gothic UI',
+    'Meiryo', system-ui, sans-serif;
+  --font-body: 'Zen Kaku Gothic New', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', system-ui, sans-serif;
+
+  --gutter: 20px;
+  --radius-card: 18px;
+  --radius-pill: 999px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--cream);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--orange);
+}
+
+:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+main.wrap {
+  padding-top: 34px;
+  padding-bottom: 72px;
+}
+
+main.wrap > :first-child {
+  margin-top: 0;
+}
+
+/* ------------------------------------------------------------ */
+/* ヘッダー共通（ネイビー帯。アプリアイコンと同じ色面から始める）        */
+/* ------------------------------------------------------------ */
+
+.site-header {
+  background: var(--navy);
+  border-bottom: 1px solid var(--navy-line);
+}
+
+.site-header > .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.site-header .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.site-header .brand img {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  flex: none;
+}
+
+.site-header .brand-name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--on-navy);
+  letter-spacing: 0.02em;
+}
+
+.site-header .brand-name .accent {
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.site-header nav a {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--on-navy-muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 3px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.site-header nav a:hover,
+.site-header nav a:focus-visible {
+  color: var(--on-navy);
+  border-bottom-color: var(--orange);
+}
+
+/* ------------------------------------------------------------ */
+/* ヒーロー（トップページ）                                          */
+/* ------------------------------------------------------------ */
+
+.hero {
+  background: var(--navy);
+  color: var(--on-navy);
+  padding: 36px 0 48px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero h1 {
+  color: var(--on-navy);
+  font-size: clamp(28px, 6.4vw, 42px);
+  line-height: 1.3;
+  margin: 12px 0 14px;
+  letter-spacing: 0.01em;
+}
+
+.hero h1 .acc {
+  color: var(--yellow);
+}
+
+.hero .lead {
+  color: var(--on-navy-muted);
+  font-size: 15px;
+  margin: 0;
+  max-width: 34em;
+}
+
+.hero .lead strong {
+  color: var(--on-navy);
+}
+
+.hero-art {
+  width: 150px;
+  height: 150px;
+  border-radius: 32px;
+  border: 2px solid var(--navy-line);
+  flex: none;
+}
+
+/* ------------------------------------------------------------ */
+/* 下層ページの見出し帯                                             */
+/* ------------------------------------------------------------ */
+
+.page-head {
+  background: var(--navy);
+  color: var(--on-navy);
+  padding: 30px 0 34px;
+}
+
+.page-head h1 {
+  color: var(--on-navy);
+  font-size: clamp(24px, 5.2vw, 32px);
+  margin: 0;
+}
+
+.page-head .updated {
+  color: var(--on-navy-muted);
+  margin: 10px 0 0;
+}
+
+.back-home {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--on-navy-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.back-home:hover,
+.back-home:focus-visible {
+  color: var(--yellow);
+}
+
+/* ------------------------------------------------------------ */
+/* 見出し・本文                                                    */
+/* ------------------------------------------------------------ */
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--navy);
+  font-feature-settings: 'palt' 1;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 54px 0 14px;
+}
+
+h2::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 22px;
+  border-radius: 3px;
+  background: var(--orange);
+}
+
+h2::after {
+  content: '';
+  flex: 1 1 auto;
+  height: 2px;
+  background: var(--hairline);
+}
+
+h3 {
+  font-size: 15px;
+  margin: 0 0 6px;
+  line-height: 1.6;
+}
+
+p,
+li {
+  font-size: 15px;
+  color: var(--text);
+}
+
+main p {
+  margin: 0 0 14px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+li::marker {
+  color: var(--orange);
+}
+
+strong {
+  font-weight: 700;
+}
+
+.updated {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--yellow);
+  border: 2px solid rgba(255, 200, 61, 0.45);
+  border-radius: var(--radius-pill);
+  padding: 4px 14px;
+  line-height: 1.7;
+}
+
+/* ------------------------------------------------------------ */
+/* カード類                                                        */
+/* ------------------------------------------------------------ */
+
+.card {
+  background: var(--cream-card);
+  border: 2px solid var(--hairline);
+  border-radius: var(--radius-card);
+  padding: 20px 22px;
+  margin-top: 14px;
+}
+
+/* 役割カード: 「見る側」と「見ない側」を色面の反転で対比させる */
+.roles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin: 18px 0 22px;
+}
+
+.role-card {
+  border-radius: var(--radius-card);
+  padding: 18px 20px 20px;
+}
+
+.role-card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.role-card p {
+  font-size: 13.5px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.role-badge {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius-pill);
+  padding: 2px 12px;
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+/* 読み手: 画面を見る側 = 塗りつぶし */
+.role-card.is-reader {
+  background: var(--navy);
+  color: var(--on-navy);
+}
+
+.role-card.is-reader h3 {
+  color: var(--on-navy);
+}
+
+.role-card.is-reader p {
+  color: var(--on-navy-muted);
+}
+
+.role-card.is-reader .role-badge {
+  background: var(--orange);
+  color: var(--cream-card);
+}
+
+/* 聞き手: 画面を見ない側 = 破線の輪郭だけ */
+.role-card.is-guesser {
+  background: transparent;
+  border: 2px dashed rgba(24, 36, 58, 0.35);
+}
+
+.role-card.is-guesser .role-badge {
+  background: transparent;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+  padding: 0 10px;
+}
+
+/* パック一覧: 均一なカードグリッドではなく、流れる行に並ぶタグ列にする */
+.packs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.pack-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cream-card);
+  border: 2px solid var(--hairline);
+  border-radius: var(--radius-pill);
+  padding: 8px 18px 8px 12px;
+}
+
+.pack-card .emoji {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.pack-card .name {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--navy);
+}
+
+.pack-card .price {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  border-left: 2px solid var(--hairline);
+  padding-left: 10px;
+}
+
+.pack-card.is-free {
+  border-color: var(--green);
+  background: rgba(61, 174, 98, 0.08);
+}
+
+.pack-card.is-free .price {
+  color: var(--green);
+  border-left-color: rgba(61, 174, 98, 0.35);
+}
+
+/* ------------------------------------------------------------ */
+/* ボタン・バッジ                                                   */
+/* ------------------------------------------------------------ */
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: 2px dashed rgba(24, 36, 58, 0.3);
+  border-radius: 14px;
+  padding: 12px 18px;
+  background: var(--cream-card);
+  color: var(--navy);
+  cursor: default;
+  user-select: none;
+}
+
+.store-badge .platform {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+.store-badge .status {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  line-height: 1.6;
+}
+
+/* ------------------------------------------------------------ */
+/* FAQ・問い合わせ                                                  */
+/* ------------------------------------------------------------ */
+
+.faq-item {
+  border-top: 2px solid var(--hairline);
+  padding: 18px 0 6px;
+}
+
+.faq-item:first-of-type {
+  border-top: none;
+}
+
+.faq-item h3 {
+  font-size: 15.5px;
+  margin-bottom: 8px;
+}
+
+.faq-item p {
+  margin: 0 0 8px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  border-color: var(--navy);
+}
+
+.contact-card .mail-link {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--orange);
+  text-decoration: none;
+  border-bottom: 2px solid var(--orange);
+  word-break: break-all;
+}
+
+.contact-card .mail-link:hover,
+.contact-card .mail-link:focus-visible {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+
+/* ------------------------------------------------------------ */
+/* フッター                                                        */
+/* ------------------------------------------------------------ */
+
+.site-footer {
+  background: var(--navy);
+  color: var(--on-navy-muted);
+  text-align: center;
+  font-size: 12px;
+}
+
+.site-footer > .wrap {
+  padding-top: 28px;
+  padding-bottom: 36px;
+}
+
+.site-footer nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.site-footer nav a {
+  color: var(--on-navy);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 12.5px;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.15s ease;
+}
+
+.site-footer nav a:hover,
+.site-footer nav a:focus-visible {
+  border-bottom-color: var(--orange);
+}
+
+.site-footer .copyright {
+  margin: 0;
+  font-size: 12px;
+  color: var(--on-navy-muted);
+}
+
+/* ------------------------------------------------------------ */
+/* レスポンシブ                                                     */
+/* ------------------------------------------------------------ */
+
+@media (max-width: 720px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+  .hero-art {
+    width: 124px;
+    height: 124px;
+    border-radius: 26px;
+    order: -1;
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --gutter: 16px;
+  }
+  .hero {
+    padding-bottom: 36px;
+  }
+  .hero-art {
+    width: 104px;
+    height: 104px;
+    border-radius: 22px;
+  }
+  h2 {
+    margin-top: 44px;
+    font-size: 18px;
+  }
+  .store-badge {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
