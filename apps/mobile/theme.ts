@@ -68,9 +68,40 @@ export const LABEL: TextStyle = {
 };
 
 /**
+ * パック用に1つだけ増やした派生色（teal）。
+ *
+ * パックが6枚になり、トークンの4色（yellow / orange / navy / green）だけでは
+ * 隣り合うカードの色が重なるようになったため、色の枠を1つだけ広げる。
+ * ただし「好きな色を足す」のではなく、既にパレットにある2色の“あいだ”を取る:
+ *
+ *   navy  #18243a … H219 S41% L16%
+ *   green #3dae62 … H140 S48% L46%
+ *   teal  #27a5a5 … H180 S62% L40%   ← 色相は navy と green のちょうど中点（179.2°）
+ *
+ * 色相をこの2色の中点に置いているので、パレットに「よその色」が混ざった感じにならず、
+ * 明度も navy(16%) と green(46%) のあいだに収まって、既存アクセントの階段に素直に並ぶ。
+ * 彩度だけは一段上げてある。この明度帯で彩度を green に揃えるとくすんだ灰青になり、
+ * orange / yellow のポップさに対して1枚だけ沈んで見えるため。
+ *
+ * 色相を厳密に中点に置いているのは見た目の理由もある。スタート設定画面の3列グリッドでは
+ * teal のカードが navy のカードの真下に来るので、青側に寄せると隣り合う2枚が
+ * 似た色になる。中点なら navy とも green とも約40°ずつ離れ、どちらとも混ざらない。
+ *
+ * cream 地に対するコントラスト比は約2.9で、既に枠線・タイルに使っている
+ * green（約2.7）より高い。用途も同じ（枠線とタイルの地色。本文の文字色には使わない）。
+ */
+const TEAL = '#27a5a5';
+
+/**
  * パックごとのアクセント色。
- * トークンの4色（yellow / orange / navy / green）を配り分けるだけで、新しい色相は増やさない。
- * 「同じ形のカードが5枚並ぶ」単調さを、色の違いだけで崩すのが目的。
+ * トークンの4色＋派生の teal を配り分けるだけで、それ以外の色相は増やさない。
+ * 「同じ形のカードが6枚並ぶ」単調さを、色の違いだけで崩すのが目的。
+ *
+ * 並び順（PACKS の順）と色の関係。スタート設定画面の3列グリッドでは
+ * 上段が starter 🎈 yellow / travel ✈️ orange / business 💼 navy、
+ * 下段が animals 🐾 green / food 🍔 yellow / toeic_verbs 🎯 teal になる。
+ * 同じ色が上下・左右で直接隣り合う組み合わせはない。
+ * 右列だけが navy と teal の寒色2枚になり、暖色が並ぶ左2列との対比で縦の帯ができる。
  */
 const PACK_ACCENTS: Record<string, string> = {
   starter: COLORS.yellow,
@@ -78,6 +109,7 @@ const PACK_ACCENTS: Record<string, string> = {
   business: COLORS.navy,
   animals: COLORS.green,
   food: COLORS.yellow,
+  toeic_verbs: TEAL,
 };
 
 export function packAccent(packId: string): string {

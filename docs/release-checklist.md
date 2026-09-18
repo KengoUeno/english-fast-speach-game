@@ -44,9 +44,9 @@
 
 - [ ] RevenueCat（https://app.revenuecat.com）でプロジェクトを作成し、iOS / Android のアプリを紐付ける
 - [ ] App Store Connect と Google Play Console の**両方**に、`docs/store-listing.md` の商品登録情報表のとおり
-      4商品すべてを同一の商品ID（`travel_pack_1` / `business_pack_1` / `animals_pack_1` / `food_pack_1`）・
+      5商品すべてを同一の商品ID（`travel_pack_1` / `business_pack_1` / `animals_pack_1` / `food_pack_1` / `toeic_verbs_pack_1`）・
       非消耗型（Non-Consumable）・100円で登録する
-- [ ] RevenueCat 側で Offering を作成し、4商品すべてを `availablePackages` に含める
+- [ ] RevenueCat 側で Offering を作成し、5商品すべてを `availablePackages` に含める
       （本アプリの実装は `Purchases.purchasePackage()` を使う方式のため、Offering への登録が必須。
       `Purchases.purchaseProduct()` 直接指定はAndroidで `PRODUCT_NOT_AVAILABLE_FOR_PURCHASE_ERROR` になることがある — 教訓集「技術的な補足」参照）
 - [ ] RevenueCat の本番APIキー（iOS / Android）を取得する
@@ -92,17 +92,17 @@ Xcode / Android Studio のローカルインストールは不要。`eas build` 
 
 ## フェーズ5: 審査提出（最も事故が起きやすい工程）
 
-- [ ] **ストア画面に表示している4つの有料パック（旅行・ビジネス・動物・食べ物）すべてを、初回の審査提出に含める。**
+- [ ] **ストア画面に表示している5つの有料パック（旅行・ビジネス・動物・食べ物・TOEIC動詞）すべてを、初回の審査提出に含める。**
       「1つだけ先に出して後から足す」は絶対に行わない
       （**教訓6: 前作はUIに5パック表示していたのに審査には1つしか含めず、
       "Guideline 2.1(b) - Performance: App Completeness" で却下された**）
-- [ ] App Store Connect で4商品を1つの提出にまとめる（**教訓6bの手順**、本作の4商品向けに具体化）:
+- [ ] App Store Connect で5商品を1つの提出にまとめる（**教訓6bの手順**、本作の5商品向けに具体化）:
   1. 新しく作成したApp内購入商品（`travel_pack_1` 等）は、それぞれ自動的に個別の「提出物の下書き」を持つ。
      「アプリ内購入」一覧の「編集」チェックボックスは、既に個別の下書きに紐づいている商品はグレーアウトして選択できない
-  2. まとめるには、`travel_pack_1` / `business_pack_1` / `animals_pack_1` / `food_pack_1` の各商品の詳細ページを開き、
+  2. まとめるには、`travel_pack_1` / `business_pack_1` / `animals_pack_1` / `food_pack_1` / `toeic_verbs_pack_1` の各商品の詳細ページを開き、
      「項目を削除することは可能です」のリンク（または下書きパネル内の赤い「−」ボタン）から個別の下書きを削除する
      （商品自体は消えず、「どの提出物にも属さない自由な状態」に戻るだけ）
-  3. 4商品すべてをこの「自由な状態」にしたら、「アプリ内購入」一覧のチェックボックスで4つ全部を選択し、
+  3. 5商品すべてをこの「自由な状態」にしたら、「アプリ内購入」一覧のチェックボックスで5つ全部を選択し、
      「審査用に追加」をクリック → 1つの複数商品セットの下書きができる
   4. アプリバージョンのページで「審査用に追加」からこのセットを選んで紐付け、まとめて審査提出する
   5. 既にどれかの商品が却下済みのバージョンに紐づいている場合は、先に「App Review」→ 該当の提出物の詳細ページ →
@@ -119,7 +119,7 @@ Xcode / Android Studio のローカルインストールは不要。`eas build` 
       TestFlightやクローズドテストで表示されなくても実装ミスとは限らない
       （**教訓10: TestFlightのベータ版では意図的に無効化される。Androidも同様にGoogle Play側の非公開クォータがある**）。
       本番リリース後、3回プレイしてから挙動を確認する
-- [ ] 本番リリース後、実決済（Sandboxではない実際の購入）で4パックすべての購入と復元を確認する
+- [ ] 本番リリース後、実決済（Sandboxではない実際の購入）で5パックすべての購入と復元を確認する
 - [ ] 今回のリリースで新たに得た教訓を `docs/mobile-app-release-lessons.md` に追記する
 
 ---

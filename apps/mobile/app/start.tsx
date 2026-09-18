@@ -259,7 +259,7 @@ export default function StartScreen() {
       </View>
 
       {/* 3列グリッド。react-native の `gap` ではなく「負のマージン＋列パディング」で溝を作るのは、
-          5枚（3+2）で折り返したときに最終行のカード幅を1行目と完全に揃えるため。
+          6枚（3+3）で折り返したときに最終行のカード幅を1行目と完全に揃えるため。
           幅は container に対する割合で決めるので、375px でも横スクロールは発生しない */}
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: -5, marginBottom: -12 }}>
         {PACKS.map((pack) => {
@@ -302,7 +302,7 @@ export default function StartScreen() {
                     alignItems: 'center',
                     borderWidth: BORDER.thick,
                     // ロック中も輪郭と地色にそのパックのアクセント色を淡く残す。
-                    // 無彩色にすると未所有のパックが全部同じ顔になり、5枚並んだときに
+                    // 無彩色にすると未所有のパックが全部同じ顔になり、6枚並んだときに
                     // 「どれがどれか」が読めなくなるため。開いていないことは
                     // 南京錠と INK.muted のパック名で伝える。
                     // 一時解放中だけは輪郭を濃い黄に変え、ストア画面と同じ
@@ -341,7 +341,7 @@ export default function StartScreen() {
                   >
                     {pack.title}
                   </Text>
-                  {/* 補足行は常に同じ高さで確保し、5枚のカードの下端が揃うようにする。
+                  {/* 補足行は常に同じ高さで確保し、各行のカードの下端が揃うようにする。
                       一時解放中だけ砂時計の図形を添えて「借りもの」であることを示す。
                       絵文字ではなく View で描いた図形にするのは、PackEmblem のロック錠と同じ方針
                       （端末ごとの字形差をなくし、ブランド色のまま表示する） */}

@@ -119,14 +119,15 @@
 | `business_pack_1` | ビジネスパック | 会議・メール・オフィスなど、ビジネスシーンで使う単語100問を収録。 | 100円（Tier 1相当） | 非消耗型（Non-Consumable） |
 | `animals_pack_1` | 動物パック | 身近な動物から動物園の人気者まで、動物にまつわる単語100問を収録。 | 100円（Tier 1相当） | 非消耗型（Non-Consumable） |
 | `food_pack_1` | 食べ物パック | 料理・飲み物・味の表現など、食べ物にまつわる単語100問を収録。 | 100円（Tier 1相当） | 非消耗型（Non-Consumable） |
+| `toeic_verbs_pack_1` | TOEIC動詞パック | TOEIC 500点レベルで頻出するビジネス動詞100問を収録。トピックではなく英語レベルを軸にしたパック。 | 100円（Tier 1相当） | 非消耗型（Non-Consumable） |
 
 > **⚠️ 教訓6（重要・最初の審査提出の前に必ず確認する）**
 > 前作「察してEnglish」は、ストア画面のUIに5パックを表示していたのに審査提出には1パックしか含めておらず、
 > "Guideline 2.1(b) - Performance: App Completeness" で却下された（Appleのメッセージ:
 > 「the app includes references to word pack but the associated In-App Purchase products have not been submitted for review」）。
 >
-> **本作でも同じ事故を避けるため、上記4商品（`travel_pack_1` / `business_pack_1` / `animals_pack_1` / `food_pack_1`）は
-> 「1つだけ先に出して後から追加する」ことを絶対にせず、最初の審査提出に必ず全部まとめて含めること。**
+> **本作でも同じ事故を避けるため、上記5商品（`travel_pack_1` / `business_pack_1` / `animals_pack_1` / `food_pack_1` /
+> `toeic_verbs_pack_1`）は「1つだけ先に出して後から追加する」ことを絶対にせず、最初の審査提出に必ず全部まとめて含めること。**
 > 具体的な手順は `docs/release-checklist.md` の教訓6bの節を参照。
 
 ---

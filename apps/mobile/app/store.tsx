@@ -22,7 +22,7 @@ export default function StoreScreen() {
   useEffect(() => clearMessage, [clearMessage]);
 
   // 無料パックだけは「もう持っているもの」として別扱いで先頭に置き、
-  // 有料パックの一覧と見た目を変える。5枚の同じカードが並ぶ単調さをここで崩す。
+  // 有料パックの一覧と見た目を変える。同じ形のカードが縦に並ぶ単調さをここで崩す。
   const freePacks = PACKS.filter((pack) => pack.isFree);
   const paidPacks = PACKS.filter((pack) => !pack.isFree);
 

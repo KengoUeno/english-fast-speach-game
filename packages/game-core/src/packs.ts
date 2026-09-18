@@ -4,12 +4,16 @@ import { travelCards } from './packs/travelCards.ts';
 import { businessCards } from './packs/businessCards.ts';
 import { animalCards } from './packs/animalCards.ts';
 import { foodCards } from './packs/foodCards.ts';
+import { toeicVerbsCards } from './packs/toeicVerbsCards.ts';
 
 /**
  * 全パックの一覧（Sprint 3 機能A）。表示順＝ストア・スタート設定画面での表示順。
  * 有料パックの商品IDはここ1箇所にのみ記述する（画面コードにハードコードしない）。
  * 前作の教訓6（画面に出す商品は初回審査でまとめて提出する）を踏まえ、
- * このスプリントの完了をもってラインナップを凍結する初回4パック構成。
+ * Sprint 3の完了をもってラインナップを凍結した初回4パック構成に、
+ * spec.mdのマネタイズ方針に基づく「英語レベル別パック」第1弾（TOEIC動詞）を追加した5パック構成。
+ * 新規追加時も同じ教訓6の対象になるため、審査提出時は画面に表示する全商品をまとめて含めること
+ * （docs/store-listing.md の教訓6の節を参照）。
  */
 export const PACKS: Pack[] = [
   {
@@ -54,6 +58,15 @@ export const PACKS: Pack[] = [
     productId: 'food_pack_1',
     priceJPY: 100,
     cards: foodCards,
+  },
+  {
+    id: 'toeic_verbs',
+    title: 'TOEIC動詞',
+    emoji: '🎯',
+    isFree: false,
+    productId: 'toeic_verbs_pack_1',
+    priceJPY: 100,
+    cards: toeicVerbsCards,
   },
 ];
 
