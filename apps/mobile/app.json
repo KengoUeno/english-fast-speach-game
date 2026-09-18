@@ -38,6 +38,13 @@
           "imageWidth": 220
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d707ff57-d9c2-4966-844d-316a816aad17"
+      }
+    },
+    "owner": "uenokengos-team"
   }
 }
