@@ -5,13 +5,11 @@
  * `docs/store-listing.md` と `docs/release-checklist.md` に記載する公開URLも、
  * 必ずこのファイルの値と同じものを使うこと。
  *
- * 値は `site/` を GitHub Pages（プロジェクトページ）で公開する想定のURL。
- * リポジトリ名・GitHubユーザー名は5-B（ユーザー作業）でリポジトリを作成した時点で確定する。
- * 実際に作成したリポジトリ名がこれと異なる場合は、このファイルの値を実URLに更新し、
- * 同時に docs/store-listing.md / docs/release-checklist.md の記載も揃えて更新すること。
+ * 値は `site/` を GitHub Pages（プロジェクトページ）で公開している実URL
+ * （リポジトリ https://github.com/KengoUeno/english-fast-speach-game 、確定済み）。
  */
 
-const GITHUB_PAGES_BASE_URL = 'https://KengoUeno.github.io/english-fast-speach-game';
+const GITHUB_PAGES_BASE_URL = 'https://kengoueno.github.io/english-fast-speach-game';
 
 /** プライバシーポリシーの公開URL */
 export const PRIVACY_POLICY_URL = `${GITHUB_PAGES_BASE_URL}/privacy-policy/`;

@@ -32,7 +32,7 @@
 - [ ] GitHub リポジトリを作成し、`site/` を GitHub Pages（プロジェクトページ）で公開する
       （教訓: モバイルのみの構成では Vercel ではなく GitHub Pages を使う。追加のアカウント・ダッシュボードが不要）
 - [ ] 公開後のURLが `apps/mobile/lib/links.ts` の `GITHUB_PAGES_BASE_URL`
-      （現在の仮値: `https://KengoUeno.github.io/english-fast-speach-game`）と一致するか確認する。
+      （現在の仮値: `https://kengoueno.github.io/english-fast-speach-game`）と一致するか確認する。
       リポジトリ名・GitHubユーザー名が異なる場合は、`lib/links.ts` ・ `docs/store-listing.md` ・
       このファイルの3箇所を実際のURLに揃えて更新する
 - [ ] 公開後、実際のURLでプライバシーポリシー（`/privacy-policy/`）とサポートページ（`/support/`）が

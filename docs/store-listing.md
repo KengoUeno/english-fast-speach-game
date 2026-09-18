@@ -7,9 +7,9 @@
 
 | 項目 | URL |
 |---|---|
-| プライバシーポリシー | `https://KengoUeno.github.io/english-fast-speach-game/privacy-policy/` |
-| サポート | `https://KengoUeno.github.io/english-fast-speach-game/support/` |
-| ランディングページ | `https://KengoUeno.github.io/english-fast-speach-game/` |
+| プライバシーポリシー | `https://kengoueno.github.io/english-fast-speach-game/privacy-policy/` |
+| サポート | `https://kengoueno.github.io/english-fast-speach-game/support/` |
+| ランディングページ | `https://kengoueno.github.io/english-fast-speach-game/` |
 
 > `site/` をまだ GitHub Pages で公開していない場合、実際のリポジトリ名・ユーザー名がこれと異なるときは、
 > `apps/mobile/lib/links.ts` ・本ファイル・`docs/release-checklist.md` の3箇所を必ず同時に更新すること（5-Bの作業）。
@@ -135,8 +135,8 @@
 
 | 項目 | URL |
 |---|---|
-| プライバシーポリシーURL | `https://KengoUeno.github.io/english-fast-speach-game/privacy-policy/` |
-| サポートURL | `https://KengoUeno.github.io/english-fast-speach-game/support/` |
-| マーケティングURL（任意） | `https://KengoUeno.github.io/english-fast-speach-game/` |
+| プライバシーポリシーURL | `https://kengoueno.github.io/english-fast-speach-game/privacy-policy/` |
+| サポートURL | `https://kengoueno.github.io/english-fast-speach-game/support/` |
+| マーケティングURL（任意） | `https://kengoueno.github.io/english-fast-speach-game/` |
 
 これらは `apps/mobile/lib/links.ts` に定義された値と同一である。アプリ内リンクの定義を変更した場合は、本ファイルも同時に更新すること。
