@@ -16,17 +16,6 @@
     }
   },
   "submit": {
-    "production": {
-      "ios": {
-        "ascAppId": "REPLACE_WITH_APP_STORE_CONNECT_APP_ID",
-        "ascApiKeyPath": "REPLACE_WITH_LOCAL_PATH_TO_ASC_API_KEY_P8",
-        "ascApiKeyIssuerId": "REPLACE_WITH_ASC_API_KEY_ISSUER_ID",
-        "ascApiKeyId": "REPLACE_WITH_ASC_API_KEY_ID"
-      },
-      "android": {
-        "serviceAccountKeyPath": "REPLACE_WITH_LOCAL_PATH_TO_GOOGLE_SERVICE_ACCOUNT_JSON",
-        "track": "internal"
-      }
-    }
+    "production": {}
   }
 }
